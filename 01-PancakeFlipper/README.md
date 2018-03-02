@@ -38,7 +38,7 @@ Every character in **S** is either + or -.
 
  Input | Output |
 -------|--------| 
-`3`  <br />  `---+-++- 3`  <br /> `+++++ 4` <br />  `-+-+- 4` <br /> | `Case #1: 3`  <br />  `Case #2: 0` <br />  `Case #3: IMPOSSIBLE` |
+3  <br />  ---+-++- 3  <br /> +++++ 4 <br />  -+-+- 4 <br /> | Case #1: 3  <br />  Case #2: 0 <br />  Case #3: IMPOSSIBLE |
 
 
 In Case #1, you can get all the pancakes happy side up by first flipping the leftmost 3 pancakes, getting to ++++-++-, then the rightmost 3, getting to ++++---+, and finally the 3 pancakes that remain blank side up. There are other ways to do it with 3 flips or more, but none with fewer than 3 flips.
