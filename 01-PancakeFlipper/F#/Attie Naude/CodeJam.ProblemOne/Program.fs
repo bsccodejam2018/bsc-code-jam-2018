@@ -20,16 +20,16 @@ let writeAllLines filePath rows =
 
 [<EntryPoint>]
 let main argv =
-    File.ReadAllLines @"C:\development\CodeJam\Problem 1\Input\A-small-practice.in"
+    File.ReadAllLines @"..\..\..\Input\A-small-practice.in"
     |> Array.skip 1
     |> Array.map (parseRow >> calculateFlipCount)
     |> Array.mapi printRow
-    |> writeAllLines @"C:\development\CodeJam\Problem 1\Output\A-small-practice.out"
+    |> writeAllLines @"..\..\..\Output\A-small-practice.out"
 
-    File.ReadAllLines @"C:\development\CodeJam\Problem 1\Input\A-large-practice.in"
+    File.ReadAllLines @"..\..\..\Input\A-large-practice.in"
     |> Array.skip 1
     |> Array.map (parseRow >> calculateFlipCount)
     |> Array.mapi printRow
-    |> writeAllLines @"C:\development\CodeJam\Problem 1\Output\A-large-practice.out"
+    |> writeAllLines @"..\..\..\Output\A-large-practice.out"
 
     0 // return an integer exit code
