@@ -22,9 +22,9 @@ For each test case, output one line containing Case #x: y, where x is the test c
 
 ## Limits
 
-1 ≤ **T** ≤ 100.
-Every character in **S** is either + or -.
-2 ≤ ***K** ≤ length of **S**.
+* 1 ≤ **T** ≤ 100.
+* Every character in **S** is either + or -.
+* 2 ≤ ***K** ≤ length of **S**.
 
 ### Small dataset
 
