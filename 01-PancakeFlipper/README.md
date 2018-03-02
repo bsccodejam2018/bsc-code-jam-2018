@@ -18,7 +18,7 @@ The first line of the input gives the number of test cases, **T**. **T** test ca
 
 ## Output
 
-For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is either IMPOSSIBLE if there is no way to get all the pancakes happy side up, or an integer representing the the minimum number of times you will need to use the oversized pancake flipper to do it.
+For each test case, output one line containing `Case #x: y`, where *x* is the test case number (starting from 1) and *y* is either `IMPOSSIBLE` if there is no way to get all the pancakes happy side up, or an integer representing the the minimum number of times you will need to use the oversized pancake flipper to do it.
 
 ## Limits
 
