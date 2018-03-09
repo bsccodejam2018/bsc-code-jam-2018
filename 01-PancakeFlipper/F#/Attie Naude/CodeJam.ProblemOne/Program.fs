@@ -5,7 +5,7 @@ open System.IO
 open PancakeFlipper
 
 let parseRow (s: string) =
-    let sections = s.Split(" ")
+    let sections = s.Split " "
     {
         Pancakes = sections.[0].ToCharArray() |> Array.map ((=) '+')
         FlipperWidth = sections.[1] |> int

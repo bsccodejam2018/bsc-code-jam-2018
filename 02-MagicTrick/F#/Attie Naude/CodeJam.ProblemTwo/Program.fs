@@ -16,11 +16,7 @@ let processProblems rows =
     let rec processNextBatch rows solutions =
         match rows with
         | [||] -> solutions
-        | rs ->
-            let splitRows = rs |> Array.splitAt 10
-            let nextProblems = splitRows |> snd
-            let currentSolution = splitRows |> fst |> getSolution
-            processNextBatch nextProblems (currentSolution :: solutions)
+        | rs -> getSolution rs.[0..9] :: solutions |> processNextBatch rs.[10..]
 
     processNextBatch rows [] |> List.rev |> List.toArray
 
