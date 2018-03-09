@@ -27,7 +27,7 @@ let rec trimEdges input =
 let getOptimalFlipPosition width pancakes =
     let left = (Array.splitAt width pancakes) |> fst
     let right = (Array.splitAt (pancakes.Length - width) pancakes) |> snd
-    let invertedCount = Array.countBy ((=) false)
+    let invertedCount = Array.filter not >> Array.length
 
     if (invertedCount left >= invertedCount right) then
         Position.Left
