@@ -9,12 +9,12 @@ type Scenario =
 
 let (|TrimLeadingPositive|_|) (bs: bool[]) =
     if bs.[0]
-        then Some((Array.splitAt 1 bs) |> snd)
+        then Some(bs |> Array.splitAt 1 |> snd)
         else None
 
 let (|TrimTrailingPositive|_|) (bs: bool[]) =
     if bs.[bs.Length-1]
-        then Some((Array.splitAt (bs.Length-1) bs) |> fst)
+        then Some(bs |> Array.splitAt (bs.Length-1) |> fst)
         else None
 
 let rec trimEdges input = 
@@ -25,8 +25,8 @@ let rec trimEdges input =
     | bs -> bs
 
 let getOptimalFlipPosition width pancakes =
-    let left = (Array.splitAt width pancakes) |> fst
-    let right = (Array.splitAt (pancakes.Length - width) pancakes) |> snd
+    let left = pancakes |> Array.splitAt width |> fst
+    let right = pancakes |> Array.splitAt (pancakes.Length - width) |> snd
     let invertedCount = Array.filter not >> Array.length
 
     if (invertedCount left >= invertedCount right) then
