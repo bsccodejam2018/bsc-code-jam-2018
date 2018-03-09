@@ -3,7 +3,7 @@
 open System
  open System.IO
 
-let lines = File.ReadAllLines(@"C:\Codejam\A-large-practice.in")
+let lines = File.ReadAllLines(@"C:\Codejam\Problem1\A-large-practice.in") |> Array.skip 1
 
 // Convert file lines into a list.
 let input = Seq.toList
@@ -44,19 +44,17 @@ let getk (line:string) =
     if split.Length = 1 then split.[0] |> int
     else split.[1] |> int
 
-let result count =
+let resultstring count =
     match count with
         | -1 -> "IMPOSSIBLE"
         | _ -> count |> string
 
 let format result i =
-    String.Format("Case #{0}: {1}", i + 1 |> string,  result |> string)
+    String.Format("CASE #{0}: {1}", i + 1 |> string,  resultstring result |> string)
 
-let test = getlist lines.[0]
 let output = lines |> Seq.mapi(fun i x ->format(calculate (getlist x) (getk x) 0) i) |> Seq.toList
 
-
-File.WriteAllLines("C:\Codejam\A-large-practice.out", output)
+File.WriteAllLines("C:\Codejam\Problem1\A-large-practice.out", output)
 
 [<EntryPoint>]
 let main argv =
