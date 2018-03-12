@@ -16,7 +16,7 @@ let processProblems rows =
     let rec processNextBatch rows solutions =
         match rows with
         | [||] -> solutions
-        | rs -> getSolution rs.[0..9] :: solutions |> processNextBatch rs.[10..]
+        | rs ->  getSolution rs.[0..9] :: solutions |> processNextBatch rs.[10..]
 
     processNextBatch rows [] |> List.rev |> List.toArray
 
