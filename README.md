@@ -4,3 +4,4 @@
 
 * [Pancake Flipper](/01-PancakeFlipper)
 * [Magic Trick](/02-MagicTrick)
+* [Coin Jam](/03-CoinJam)
