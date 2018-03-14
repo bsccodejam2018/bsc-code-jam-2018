@@ -1,12 +1,12 @@
 ﻿module CoinJam
 
 open System
-open System.IO
 open System.Numerics
 
-// There's literally trillions of combinations to try for the big input and billions for the small input.
-// Running the non-prime/factor checks until completion is unnecessary when we can get away with just grabbing the low-hanging fruit instead,
-// so we cap the search space for the first factor at a much lower value in order to complete within a reasonable timeframe...
+// There's literally trillions of combinations to try for the big input and thousands for the small input.
+// Running the non-prime/factor checks until completion is unnecessary when we can get away with just grabbing the 
+// low-hanging fruit instead.  So we cap the search space for the first factor at a much lower value in order to 
+// complete within a reasonable timeframe...
 let FIRST_FACTOR_CAP = 1000I
 
 type JamCoin =
@@ -16,37 +16,36 @@ type JamCoin =
     }
 
 let firstFactor n =
-    { 2I .. BigInteger.Min(FIRST_FACTOR_CAP, n/2I) }
-    |> Seq.tryFind (fun a -> n % a = 0I)
+    let searchUpperBound = BigInteger.Min(FIRST_FACTOR_CAP, n/2I)
+    let isFactor f = n % f = 0I
+    { 2I .. searchUpperBound }
+    |> Seq.tryFind isFactor
 
-let valueInBase (coinBits: int seq) base' =
-    coinBits 
-    |> Seq.toArray
-    |> Array.rev
-    |> Array.mapi (fun i a -> (a |> bigint) * (pown base' i))
+let coinValueInBase (coinBits: int[]) base' =
+    let bitValue pos (b: int) = bigint(b) * (pown base' pos)
+    coinBits
+    |> Array.mapi bitValue
     |> Array.sum
 
 let buildCoinBits length seed =
-    seq {
-        yield 1
-        for i in 0 .. (length - 3) do
-            yield (seed >>> i) % 2
-        yield 1
-    }
+    let valueAtPos pos = (seed >>> pos) % 2
+    let coin =
+        [1] @
+        List.map valueAtPos [ 0 .. length - 3 ] @
+        [1]
+    coin |> List.toArray
 
-let allPossibleCoins length =
-    seq {
-        for i in 0 .. (pown 2 (length-2)) - 1 do
-            yield buildCoinBits length i |> Seq.toArray |> Array.rev
-    }
+let allCoinsOfLength length =
+    let seedUpperBound = (pown 2 (length-2)) - 1
+    { 0 .. seedUpperBound }
+    |> Seq.map (buildCoinBits length)
 
-let verifyJamCoin candidateCoin =
+let buildJamCoin candidateCoin =
     let nonTrivialDivisors = 
         [2I..10I]
-        |> List.map (valueInBase candidateCoin)
+        |> List.map (coinValueInBase candidateCoin)
         |> List.map firstFactor
-
-    if nonTrivialDivisors |> Seq.forall Option.isSome then
+    if Seq.forall Option.isSome nonTrivialDivisors then
         Some {
             Coin = candidateCoin
             NonTrivialDivisors = nonTrivialDivisors |> List.map Option.get |> List.toArray
@@ -55,8 +54,8 @@ let verifyJamCoin candidateCoin =
         None
 
 let getCoins (length, count) =
-    allPossibleCoins length
-    |> Seq.map verifyJamCoin
+    allCoinsOfLength length
+    |> Seq.map buildJamCoin
     |> Seq.filter Option.isSome
     |> Seq.map Option.get
     |> Seq.take count

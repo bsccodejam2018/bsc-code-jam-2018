@@ -1,14 +1,12 @@
 ﻿open System
 open System.IO
-open System.Numerics
 open CoinJam
 
 let printCoins i coins =
     let printCoin coin =
         sprintf "%s %s" 
-            (coin.Coin |> Array.map string |> String.concat "") 
+            (coin.Coin |> Array.rev |> Array.map string |> String.concat "") 
             (coin.NonTrivialDivisors |> Array.map string |> String.concat " ")
-        
     sprintf "Case #%i:\n%s" 
         (i+1)
         (coins |> Array.map printCoin |> String.concat "\n")
