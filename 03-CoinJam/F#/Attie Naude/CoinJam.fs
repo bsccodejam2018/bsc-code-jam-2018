@@ -3,7 +3,7 @@
 open System
 open System.Numerics
 
-// There's literally trillions of combinations to try for the big input and thousands for the small input.
+// There's a billion (2^30) combinations to try for the big input and thousands (2^14) for the small input.
 // Running the non-prime/factor checks until completion is unnecessary when we can get away with just grabbing the 
 // low-hanging fruit instead.  So we cap the search space for the first factor at a much lower value in order to 
 // complete within a reasonable timeframe...
