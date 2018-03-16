@@ -18,9 +18,9 @@ You want to share your recipe with as many customers as possible, so you want to
 
 The first line of the input gives the number of test cases, **T**. **T** test cases follow. Each case consists of the following:
 
-    * One line with two integers **N**: the number of ingredients, and **P**, the number of packages of each ingredient.
-    * One line with **N** integers **R<sub>i</sub>**. The i-th of these represents the number of grams of the i-th ingredient needed to make one serving of ratatouille.
-    * **N** more lines of **P** integers each. The j-th value on the i-th of these lines, **Q<sub>ij</sub>**, represents the quantity, in grams, in the j-th package of the i-th ingredient.
+* One line with two integers **N**: the number of ingredients, and **P**, the number of packages of each ingredient.
+* One line with **N** integers **R<sub>i</sub>**. The i-th of these represents the number of grams of the i-th ingredient needed to make one serving of ratatouille.
+* **N** more lines of **P** integers each. The j-th value on the i-th of these lines, **Q<sub>ij</sub>**, represents the quantity, in grams, in the j-th package of the i-th ingredient.
 
 ## Output
 
