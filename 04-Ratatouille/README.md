@@ -29,8 +29,8 @@ For each test case, output one line containing Case #x: y, where x is the test c
 ## Limits
 
 * 1 ≤ **T** ≤ 100.
-* 1 ≤ **R<sub>i</sub>** ≤ 106, for all i.
-* 1 ≤ **Q<sub>ij</sub>** ≤ 106, for all i and j.
+* 1 ≤ **R<sub>i</sub>** ≤ 10<sup>6</sup>, for all i.
+* 1 ≤ **Q<sub>ij</sub>** ≤ 10<sup>6</sup>, for all i and j.
 
 ### Small dataset
 
