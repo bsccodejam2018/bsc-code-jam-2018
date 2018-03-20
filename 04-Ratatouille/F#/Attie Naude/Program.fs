@@ -29,13 +29,6 @@ let writeAllLines filePath rows =
 [<EntryPoint>]
 let main argv =
 
-    File.ReadAllLines @"..\..\Input\Sample.in"
-    |> Array.skip 1
-    |> parseInput
-    |> Array.map calculateKitCount
-    |> Array.mapi printResult
-    |> writeAllLines @"..\..\Output\Sample.out"
-
     File.ReadAllLines @"..\..\Input\B-small-practice.in"
     |> Array.skip 1
     |> parseInput
