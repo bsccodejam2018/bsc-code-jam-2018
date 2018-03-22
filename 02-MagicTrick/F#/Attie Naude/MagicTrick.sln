@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CodeJam.ProblemTwo", "CodeJam.ProblemTwo\CodeJam.ProblemTwo.fsproj", "{CB11D177-3360-4717-81DC-5833637C934E}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MagicTrick", "MagicTrick.fsproj", "{CB11D177-3360-4717-81DC-5833637C934E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
