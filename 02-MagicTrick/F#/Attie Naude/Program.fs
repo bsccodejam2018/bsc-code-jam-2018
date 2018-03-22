@@ -3,12 +3,12 @@ open System.IO
 open MagicTrick
 
 let processScenarios rows =
-    let rec processNextScenario solutions rows =
+    let rec processNextScenario rows solutions =
         match rows with
         | [||] -> solutions
-        | rs ->  getChosenCard rs.[0..9] :: processNextScenario solutions rs.[10..]
+        | rs ->  getChosenCard rs.[0..9] :: solutions |> processNextScenario rs.[10..]
 
-    rows |> processNextScenario [] |> List.rev |> List.toArray
+    processNextScenario rows [] |> List.rev |> List.toArray
 
 let printRow index =
     sprintf "CASE #%i: %s" (index+1)
