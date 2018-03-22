@@ -45,7 +45,7 @@ let buildJamCoin candidateCoin =
         [2I..10I]
         |> List.map (coinValueInBase candidateCoin)
         |> List.map firstFactor
-    if Seq.forall Option.isSome nonTrivialDivisors then
+    if nonTrivialDivisors |> Seq.forall Option.isSome then
         Some {
             Coin = candidateCoin
             NonTrivialDivisors = nonTrivialDivisors |> List.map Option.get |> List.toArray

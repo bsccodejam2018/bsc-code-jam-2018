@@ -38,7 +38,7 @@ let calculateKitCount scenario =
                 |> (Set.isEmpty >> not)
 
             if canMakeKit then
-                sortedRows |> List.map (List.tail) |> calculateKitCountImpl (count+1)
+                sortedRows |> List.map List.tail |> calculateKitCountImpl (count+1)
             else 
                 match sortedRows with
                 | firstRow :: otherRows -> (List.tail firstRow) :: otherRows |> calculateKitCountImpl count
