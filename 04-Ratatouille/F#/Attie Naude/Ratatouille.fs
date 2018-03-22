@@ -1,6 +1,6 @@
 ﻿module Ratatouille
 
-type KitInput =
+type ScenarioInput =
     {
         RequiredQuantities : int[]
         IngredientPackages: int[][]
@@ -11,24 +11,26 @@ let possibleServingCounts requiredQuantity packageQuantity =
     let upperBound = float(packageQuantity) / float(requiredQuantity) / 0.9 |> floor |> int
     [|lowerBound .. upperBound|]
 
-let calculateKitCount input =
-    let servingCountMatrix =
-        Array.zip input.RequiredQuantities input.IngredientPackages
-        |> Array.map (fun (requiredQuantity, ingredientRow) -> ingredientRow |> Array.map (possibleServingCounts requiredQuantity) |> Array.toList)
-        |> Array.map (List.filter (Array.isEmpty >> not))
+let getServingCountMatrix scenario =
+    let calculateRow (requiredQuantity, ingredientRow) = 
+        ingredientRow 
+        |> Array.map (possibleServingCounts requiredQuantity) 
         |> Array.toList
 
-    let containsEmptyRow = List.exists (List.isEmpty)
-    let packageCountThenPackageLength row = (Array.min row, Array.length row)
+    Array.zip scenario.RequiredQuantities scenario.IngredientPackages
+    |> Array.map calculateRow
+    |> Array.map (List.filter (Array.isEmpty >> not))
+    |> Array.toList
 
-    let rec calculateKitCountImpl matrix count =
+let containsEmptyRow = List.exists (List.isEmpty)
+let packageCountThenPackageLength row = (Array.min row, Array.length row)
+
+let calculateKitCount scenario =
+    let rec calculateKitCountImpl count matrix =
         if matrix |> containsEmptyRow then
             count
         else
-            let sortedRows = 
-                matrix
-                |> List.map (List.sortBy packageCountThenPackageLength)
-    
+            let sortedRows = matrix |> List.map (List.sortBy packageCountThenPackageLength)
             let canMakeKit = 
                 sortedRows
                 |> List.map (List.head >> set)
@@ -36,11 +38,10 @@ let calculateKitCount input =
                 |> (Set.isEmpty >> not)
 
             if canMakeKit then
-                let newMatrix = sortedRows |> List.map (List.tail)
-                calculateKitCountImpl newMatrix count+1
+                sortedRows |> List.map (List.tail) |> calculateKitCountImpl (count+1)
             else 
                 match sortedRows with
-                | firstRow :: otherRows -> calculateKitCountImpl (List.tail firstRow :: otherRows) count
+                | firstRow :: otherRows -> (List.tail firstRow) :: otherRows |> calculateKitCountImpl count
                 | _ -> count
 
-    calculateKitCountImpl servingCountMatrix 0
+    getServingCountMatrix scenario |> calculateKitCountImpl 0
