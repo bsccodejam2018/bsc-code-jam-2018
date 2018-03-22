@@ -18,13 +18,16 @@ let calculateKitCount input =
         |> Array.map (List.filter (Array.isEmpty >> not))
         |> Array.toList
 
+    let containsEmptyRow = List.exists (List.isEmpty)
+    let packageCountThenPackageLength row = (Array.min row, Array.length row)
+
     let rec calculateKitCountImpl matrix count =
-        if matrix |> List.exists (List.isEmpty) then
+        if matrix |> containsEmptyRow then
             count
         else
             let sortedRows = 
                 matrix
-                |> List.map (List.sortBy <| fun a -> (Array.min a, Array.length a))
+                |> List.map (List.sortBy packageCountThenPackageLength)
     
             let canMakeKit = 
                 sortedRows
@@ -33,12 +36,11 @@ let calculateKitCount input =
                 |> (Set.isEmpty >> not)
 
             if canMakeKit then
-                let newMatrix =
-                    sortedRows
-                    |> List.map (List.tail)
+                let newMatrix = sortedRows |> List.map (List.tail)
                 calculateKitCountImpl newMatrix count+1
-            else match sortedRows with
-            | [] -> count
-            | h :: rem -> calculateKitCountImpl (List.tail h :: rem) count
+            else 
+                match sortedRows with
+                | firstRow :: otherRows -> calculateKitCountImpl (List.tail firstRow :: otherRows) count
+                | _ -> count
 
     calculateKitCountImpl servingCountMatrix 0

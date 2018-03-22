@@ -7,9 +7,9 @@ let parseInput lines =
         match lines with
         | [||] -> scenarios
         | ls -> 
-            let split = ls.[0].Split " "
-            let ingredientCount = split.[0] |> int
-            let packageCount = split.[1] |> int
+            let scenarioDimensions = ls.[0].Split " " |> Array.map int
+            let ingredientCount = scenarioDimensions.[0]
+            let packageCount = scenarioDimensions.[1]
 
             let scenario = {
                 RequiredQuantities = ls.[1].Split " " |> Array.map int
