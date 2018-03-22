@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CodeJam.ProblemOne", "CodeJam.ProblemOne\CodeJam.ProblemOne.fsproj", "{D27A9DBB-29E9-4C8A-BE05-BE4B15DC98C5}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PancakeFlipper", "PancakeFlipper.fsproj", "{D27A9DBB-29E9-4C8A-BE05-BE4B15DC98C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
