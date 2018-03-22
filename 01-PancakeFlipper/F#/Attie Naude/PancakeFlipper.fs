@@ -1,48 +1,22 @@
 ﻿module PancakeFlipper
 
-type Position = Left|Right
 type Scenario = 
     {
         Pancakes: bool[]
         FlipperWidth: int
     }
 
-let (|TrimLeadingPositive|_|) (bs: bool[]) =
-    if bs.[0]
-        then Some(bs |> Array.splitAt 1 |> snd)
-        else None
-
-let (|TrimTrailingPositive|_|) (bs: bool[]) =
-    if bs.[bs.Length-1]
-        then Some(bs |> Array.splitAt (bs.Length-1) |> fst)
-        else None
-
 let rec trimEdges input = 
     match input with
     | [||] -> [||]
-    | TrimLeadingPositive bs -> trimEdges bs
-    | TrimTrailingPositive bs -> trimEdges bs
+    | bs when bs.[0] -> trimEdges bs.[1..]
+    | bs when bs.[input.Length-1] -> trimEdges bs.[..input.Length-2]
     | bs -> bs
 
-let getOptimalFlipPosition width pancakes =
-    let left = pancakes |> Array.splitAt width |> fst
-    let right = pancakes |> Array.splitAt (pancakes.Length - width) |> snd
-    let invertedCount = Array.filter not >> Array.length
-
-    if (invertedCount left >= invertedCount right) then
-        Position.Left
-    else
-        Position.Right
-
-let applyFlip width pos arr =
+let applyFlip width ps =
     let flipValues = Array.map not
-    match pos with
-    | Position.Left ->
-        let sections = arr |> Array.splitAt width
-        Array.concat [fst sections |> flipValues; snd sections]
-    | Position.Right ->
-        let sections = arr |> Array.splitAt (arr.Length-width)
-        Array.concat [fst sections; snd sections |> flipValues]
+    match Array.splitAt width ps with
+    | (pancakesToBeFlipped, remainder) -> Array.concat [flipValues pancakesToBeFlipped; remainder]
 
 let calculateFlipCount scenario = 
     let rec flipPancakesImpl pancakes flipperWidth flipCount =
@@ -50,8 +24,7 @@ let calculateFlipCount scenario =
         | [||] -> Some(flipCount)
         | ps when ps.Length < flipperWidth -> None
         | ps -> 
-            let optimalFlipPosition = getOptimalFlipPosition flipperWidth ps
-            let newState = applyFlip flipperWidth optimalFlipPosition ps
+            let newState = applyFlip flipperWidth ps
             flipPancakesImpl newState flipperWidth (flipCount+1)
 
     flipPancakesImpl scenario.Pancakes scenario.FlipperWidth 0
