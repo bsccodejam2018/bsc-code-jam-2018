@@ -15,7 +15,7 @@ let parseInput lines =
                 RequiredQuantities = ls.[1].Split " " |> Array.map int
                 IngredientPackages = ls.[2..ingredientCount + 1] |> Array.map (fun a -> a.Split " " |> Array.map int)
             }
-            let remainder = ls.[ingredientCount+2 ..]
+            let remainder = ls.[ingredientCount+2 .. ]
             processNextScenario remainder (scenario :: scenarios)
 
     processNextScenario lines [] |> List.rev |> List.toArray
