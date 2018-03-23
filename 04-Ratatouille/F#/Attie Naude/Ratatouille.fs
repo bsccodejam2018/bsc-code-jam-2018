@@ -16,31 +16,31 @@ let getServingCountMatrix scenario =
         ingredientRow 
         |> Array.map (possibleServingCounts requiredQuantity) 
         |> Array.toList
+    let packageCountThenPackageLength row = (Array.min row, Array.length row)
 
     Array.zip scenario.RequiredQuantities scenario.IngredientPackages
     |> Array.map calculateRow
     |> Array.map (List.filter (Array.isEmpty >> not))
+    |> Array.map (List.sortBy packageCountThenPackageLength)
     |> Array.toList
 
-let containsEmptyRow = List.exists (List.isEmpty)
-let packageCountThenPackageLength row = (Array.min row, Array.length row)
-
 let calculateKitCount scenario =
+    let containsEmptyRow = List.exists (List.isEmpty)
+
     let rec calculateKitCountImpl count matrix =
         if matrix |> containsEmptyRow then
             count
         else
-            let sortedRows = matrix |> List.map (List.sortBy packageCountThenPackageLength)
             let canMakeKit = 
-                sortedRows
+                matrix
                 |> List.map (List.head >> set)
                 |> Set.intersectMany
                 |> (Set.isEmpty >> not)
 
             if canMakeKit then
-                sortedRows |> List.map List.tail |> calculateKitCountImpl (count+1)
+                matrix |> List.map List.tail |> calculateKitCountImpl (count+1)
             else 
-                match sortedRows with
+                match matrix with
                 | firstRow :: otherRows -> (List.tail firstRow) :: otherRows |> calculateKitCountImpl count
                 | _ -> count
 
