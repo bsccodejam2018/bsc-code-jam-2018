@@ -65,8 +65,9 @@ In sample case #6, you can form three valid kits: (700 g, 800 g, 900 g), which m
 
 ## Pseudocode Solution
 
-[View on Code2Flow] (https://code2flow.com/weVY5U)
+[View on Code2Flow](https://code2flow.com/weVY5U)
 
 ![alt text][code2flow]
+
 [code2flow]: https://code2flow.com/weVY5U.code.png "Pseudocode Solution"
 
