@@ -52,4 +52,6 @@ In Case #3, there is no way to make the second and third pancakes from the left 
 
 ![alt text][code2flow]
 
+View on Code2Flow: https://code2flow.com/SdHmcP
+
 [code2flow]: https://code2flow.com/SdHmcP.code.png "Pseudocode Solution"
