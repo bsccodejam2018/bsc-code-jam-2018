@@ -65,3 +65,12 @@ This is only one of multiple valid solutions. Other sets of jamcoins could have 
     * 110011 is another jamcoin that could have also been used in the output, but could not have been added to the end of this output, since the output must contain exactly **J** examples.
     * For the first jamcoin in the sample output, the first number after 100011 could not have been either 1 or 35, because those are trivial divisors of 35 (100011 in base 2).
 
+	
+## Pseudocode Solution
+
+View on Code2Flow: https://code2flow.com/l8JVIq
+
+![alt text][code2flow]
+[code2flow]: https://code2flow.com/l8JVIq.code.png "Pseudocode Solution"
+
+

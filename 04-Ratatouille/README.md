@@ -62,3 +62,11 @@ In sample case #4, no kits can be formed. Note that the recipe requires particul
 In sample case #5, the recipe has only one ingredient — how elegantly simple! A single serving cannot use more than 11 g, and two servings cannot use fewer than 18 g. It is possible to form three kits: two with an 11 g package, and one with an 18 g package.
 
 In sample case #6, you can form three valid kits: (700 g, 800 g, 900 g), which makes 10 servings, and (1500 g, 1600 g, 1700 g) and (1260 g, 1440 g, 1620 g), each of which makes 20 servings. Note that you could also say that the (1260 g, 1440 g, 1620 g) kit makes 17, 18, or 19 servings, but it does not matter how many servings a kit makes as long as the kit is valid.
+
+## Pseudocode Solution
+
+View on Code2Flow: https://code2flow.com/weVY5U
+
+![alt text][code2flow]
+[code2flow]: https://code2flow.com/weVY5U.code.png "Pseudocode Solution"
+

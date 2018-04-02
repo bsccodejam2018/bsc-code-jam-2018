@@ -37,3 +37,9 @@ If there is a single card the volunteer could have chosen, y should be the numbe
 |------|-------|
 |3 <br /> 2 <br /> 1 2 3 4 <br /> 5 6 7 8 <br /> 9 10 11 12 <br /> 13 14 15 16 <br /> 3 <br /> 1 2 5 4 <br /> 3 11 6 15 <br /> 9 10 7 12 <br /> 13 14 8 16 <br /> 2 <br /> 1 2 3 4 <br /> 5 6 7 8 <br /> 9 10 11 12 <br /> 13 14 15 16 <br /> 2 <br /> 1 2 3 4 <br /> 5 6 7 8 <br /> 9 10 11 12 <br /> 13 14 15 16 <br /> 2 <br /> 1 2 3 4 <br /> 5 6 7 8 <br /> 9 10 11 12 <br /> 13 14 15 16 <br /> 3 <br /> 1 2 3 4 <br /> 5 6 7 8 <br /> 9 10 11 12 <br /> 13 14 15 16 | Case #1: 7 <br /> Case #2: Bad magician! <br /> Case #3: Volunteer cheated! |
 
+## Pseudocode Solution
+
+View on Code2Flow: https://code2flow.com/I8ObmU
+
+![alt text][code2flow]
+[code2flow]: https://code2flow.com/I8ObmU.code.png "Pseudocode Solution"
