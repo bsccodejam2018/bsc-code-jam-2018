@@ -68,7 +68,7 @@ This is only one of multiple valid solutions. Other sets of jamcoins could have 
 	
 ## Pseudocode Solution
 
-View on Code2Flow: https://code2flow.com/l8JVIq
+[View on Code2Flow] (https://code2flow.com/l8JVIq)
 
 ![alt text][code2flow]
 [code2flow]: https://code2flow.com/l8JVIq.code.png "Pseudocode Solution"

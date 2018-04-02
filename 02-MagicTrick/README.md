@@ -39,7 +39,7 @@ If there is a single card the volunteer could have chosen, y should be the numbe
 
 ## Pseudocode Solution
 
-View on Code2Flow: https://code2flow.com/I8ObmU
+[View on Code2Flow] (https://code2flow.com/I8ObmU)
 
 ![alt text][code2flow]
 [code2flow]: https://code2flow.com/I8ObmU.code.png "Pseudocode Solution"
