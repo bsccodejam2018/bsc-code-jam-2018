@@ -41,10 +41,12 @@ namespace _3___coin_jam
                 string num = half + half;
                 writer.Write(num);
                 //get the nontrivial divisors of that jamcoin's interpretation in each base from 2 to 10
-                for (int j = 2; j <= 10; j++)
+                for (int baseDigit = 2; baseDigit <= 10; baseDigit++)
                 {
-                    //take the base and raise to the power of half of the length plus one
-                    writer.Write(" " + (power((ulong)j, N/2) + 1));
+                    //take the base and raise to the power of half of the length, then add one
+                    //again very hacky, but this number will be a nontrivial divisor of the number produced
+                    //using the above method
+                    writer.Write(" " + (power((ulong)baseDigit, N/2) + 1));
                 }
                 writer.WriteLine();
             }
