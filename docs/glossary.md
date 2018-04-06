@@ -1,0 +1,10 @@
+# Main Terms
+
+| Term | Definition |
+|------|------------|
+| Dynamic Typing | In a dynamically typed language, object types are determined at runtime.  This is in contrast to statically typed languages, where types are determined and enforced during the compilation phase. |
+| Static Typing | Statically typed languages infer or enforce types for values during compilation or interpretation. |
+| Managed Memory | Managed memory means that memory allocations and deallocations are handled by the runtime or interpreter that your application is running inside of.  Care should still be taken to avoid indefinitely hanging onto object references once they are no longer used, since this would prevent the Garbage Collector/Finalizer from deallocating this memory - leading to memory leaks. |
+| Unmanaged Memory | In an unmanaged memory scenario your application is responsible for the initial allocation and subsequent clean-up of memory.  Failure to properly deallocate memory used by objects that are no longer in scope will lead to memory leaks and (eventually) the inability of an application to continue executing. |
+| Scripting Language | Scripting languages are traditionally processed by an interpreter at the time of execution, as opposed to being pre-compiled.  Certain scripting languages (such as Python and JavaScript) also support pre-compilation.  This compiles the application to a bytecode format which can be loaded much more efficiently by the runtime - alleviating the need for source code compilation during the load step. |
+| Compiled Language | A compiled language has to be processed (compiled) by a compiler before it can be executed by the operating system or managed runtime.  Some managed languages also support the use of the compiler at runtime, allowing for the use of these languages as a scripting language.  A language is generally considered compiled if the runtime ingests pre-compiled byte code rather than raw source files. |
