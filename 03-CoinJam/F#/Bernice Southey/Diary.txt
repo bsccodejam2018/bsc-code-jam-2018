@@ -1,0 +1,1 @@
+Something clicked this week. After a really slow start just solving the first part, my brain started thinking F# and functional instead of constantly translating. It felt comfortable. I really enjoyed coding this problem.
