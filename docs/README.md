@@ -1,4 +1,4 @@
 # Documentation
 
-* [Language Comparison](/language-comparison.md)
-* [Glossary](/glossary.md)
+* [Language Comparison](language-comparison.md)
+* [Glossary](glossary.md)
