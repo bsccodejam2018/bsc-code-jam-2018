@@ -75,3 +75,12 @@ In Case #3, there are lots of alternatives for each delivery. The optimal one fo
 For the second delivery (city 3 to city 1) you have no choice but to first go to city 4 which takes time 10/5. Your relatively fast horse does not have enough endurance to get anywhere else, so you need to grab the horse in city 4. You could use it to get directly to city 1 in time 15, but that would be slower than riding it to city 2 in time 6 and then using the blazingly fast horse in city 2 to get to city 1 in just 10/1000 extra time.
 
 In the third delivery (city 3 to city 2) of Case #3 it is optimal to use the first two steps of the previous one, for a total time of 10/5 + 6 = 8.
+
+
+## Pseudocode Solution
+
+[View on Code2Flow](https://code2flow.com/7mdCFs)
+
+![alt text][code2flow]
+
+[code2flow]: https://code2flow.com/7mdCFs.code.png "Pseudocode Solution"
