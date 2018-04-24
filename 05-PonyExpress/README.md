@@ -48,8 +48,8 @@ Each yk will be considered correct if it is within an absolute or relative error
 ### Large dataset
 
 * 1 ≤ **Q** ≤ 100.
-1 ≤ **U<sub>k</sub>** ≤ **N**, for all **<sub>k</sub>**.
-1 ≤ **V<sub>k</sub>** ≤ **N**, for all **<sub>k</sub>**.
+* 1 ≤ **U<sub>k</sub>** ≤ **N**, for all **<sub>k</sub>**.
+* 1 ≤ **V<sub>k</sub>** ≤ **N**, for all **<sub>k</sub>**.
 
 ## Sample
 
