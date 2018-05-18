@@ -7,3 +7,4 @@
 * [Coin Jam](/03-CoinJam)
 * [Ratatouille](/04-Ratatouille)
 * [Pony Express](/05-PonyExpress)
+* [Freeform Factory](/06-FreeformFactory)
