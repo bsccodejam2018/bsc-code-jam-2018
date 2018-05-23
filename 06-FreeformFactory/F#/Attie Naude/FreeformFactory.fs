@@ -52,32 +52,32 @@ let getInitialClusters (workers: Worker list) =
     let initialClusters = List.concat [machineClusters; zeroKnowledgeWorkerClusters]
     partitionClusters initialClusters workers
 
-let memoize f =
-    let cache = System.Collections.Generic.Dictionary()
-    fun x ->
-        // When caching input values, we can treat clusters as identical if their machine counts and person counts match.
-        // This is a major performance enhancement that allows us to use the memoized value for the majority of cases...
-        let key = x |> List.map (fun c -> (c.Workers.Count, c.Machines.Count)) |> List.sort
-        if cache.ContainsKey(key) then 
-            cache.[key]
-        else
-            let res = f x
-            cache.[key] <- res
-            res
-
 let isUnbalanced cluster = cluster.Machines.Count <> cluster.Workers.Count
 let clusterSize cluster = cluster.Workers.Count * cluster.Machines.Count
 let inbalance cluster = cluster.Machines.Count - cluster.Workers.Count
 
-let applyMerge cs (clusterA, clusterB) =
+let applyMerge clusters (clusterA, clusterB) =
     let mergedCluster = joinClusters [clusterA; clusterB]
-    let otherClusters = cs |> List.except [clusterA; clusterB]
+    let otherClusters = clusters |> List.except [clusterA; clusterB]
     (mergedCluster :: otherClusters)
 
 let canBeMerged a b =
     let inbalanceA = inbalance a
     let inbalanceB = inbalance b
     inbalanceA > 0 && inbalanceB < 0|| inbalanceA < 0 && inbalanceB > 0
+
+let memoize f =
+    let cache = System.Collections.Generic.Dictionary()
+    fun parameters ->
+        // When caching input values, we can treat clusters as identical if their machine counts and person counts match.
+        // This is a major performance enhancement that allows us to use the memoized value for the majority of cases...
+        let key = parameters |> List.map (fun c -> (c.Workers.Count, c.Machines.Count)) |> List.sort
+        if cache.ContainsKey(key) then 
+            cache.[key]
+        else
+            let result = f parameters
+            cache.[key] <- result
+            result
 
 let rec calculateMinCardinality = memoize (fun clusters ->
     let unbalancedClusters = clusters |> List.filter isUnbalanced |> List.sortByDescending clusterSize
