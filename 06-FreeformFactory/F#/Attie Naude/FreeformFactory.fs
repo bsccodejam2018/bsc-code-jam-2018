@@ -27,8 +27,8 @@ let getInitialClusters (workers: Worker list) =
         | worker::remainingWorkers ->
             let clustersWithThisWorker = clusters |> List.filter (fun c -> c.Workers.Contains worker)
             let remainingClusters = clusters |> List.except clustersWithThisWorker
-            let joinedCluster = joinClusters clustersWithThisWorker
-            partitionClusters (joinedCluster :: remainingClusters) remainingWorkers
+            let mergedCluster = joinClusters clustersWithThisWorker
+            partitionClusters (mergedCluster :: remainingClusters) remainingWorkers
 
     let machineClusters = 
         [1..workers.Length] 
@@ -49,7 +49,7 @@ let getInitialClusters (workers: Worker list) =
             }
         )
 
-    let initialClusters = List.concat [machineClusters; zeroKnowledgeWorkerClusters]
+    let initialClusters = machineClusters @ zeroKnowledgeWorkerClusters
     partitionClusters initialClusters workers
 
 let isUnbalanced cluster = cluster.Machines.Count <> cluster.Workers.Count
