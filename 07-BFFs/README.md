@@ -41,3 +41,11 @@ For each test case, output one line containing "Case #x: y", where x is the test
 | 10<br />7 8 10 10 9 2 9 6 3 3  | Case #4: 6 |
 
 In sample case #4, the largest possible circle seats the following kids in the following order: 7 9 3 10 4 1. (Any reflection or rotation of this circle would also work.) Note that the kid with student ID 1 is next to the kid with student ID 7, as required, because the list represents a circle. 
+
+## Pseudocode Solution
+
+[View on Code2Flow](https://code2flow.com/iZHVEN)
+
+![alt text][code2flow]
+
+[code2flow]: https://code2flow.com/iZHVEN.code.png "Pseudocode Solution"
