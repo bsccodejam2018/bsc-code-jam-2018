@@ -9,3 +9,9 @@
 * [Pony Express](/05-PonyExpress)
 * [Freeform Factory](/06-FreeformFactory)
 * [BFFs](/07-BFFs)
+
+## Documentation
+
+* [Language Comparison](docs/language-comparison.md)
+* [Glossary](docs/glossary.md)
+* [Algorithm Learnings](docs/algorithm-learnings.md)
