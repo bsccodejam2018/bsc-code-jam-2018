@@ -9,11 +9,11 @@ let chainLength chain = chain.Items.Length
 let last2ChildrenInChain chain = chain.Items |> List.rev |> List.take 2 |> List.rev
 let longestChainInGrouping (_, chains) = chains |> Array.sortByDescending chainLength |> Array.head
 
-let getChain (children: Map<int, int>) fromId =
+let getChain (friendshipMap: Map<int, int>) fromId =
     let extractChainFromPath path loopStart =
         let secondLastNode = path |> List.head
         // Full chain can be used if last 2 children are mutual friends...
-        if children.[loopStart] = secondLastNode then
+        if friendshipMap.[loopStart] = secondLastNode then
             {
                 EndsInMutualFriendship = true
                 Items = path |> List.rev
@@ -26,20 +26,20 @@ let getChain (children: Map<int, int>) fromId =
                 Items = path.[0..loopStartIndex] |> List.rev
             }
 
-    let rec getChainImp path nodeId =
-        if path |> List.contains nodeId then
-            extractChainFromPath path nodeId
+    let rec getChainImp path childId =
+        if path |> List.contains childId then
+            extractChainFromPath path childId
         else
-            getChainImp (nodeId :: path) (children.[nodeId])
+            getChainImp (childId :: path) (friendshipMap.[childId])
 
     getChainImp [] fromId
 
-let getLargestPossibleCircleSize children =
+let getLargestPossibleCircleSize (friendshipMap: Map<int, int>) =
     let longestIndividualChains =
-        children
+        friendshipMap
         |> Map.toArray
         |> Array.map fst
-        |> Array.Parallel.map (getChain children)
+        |> Array.Parallel.map (getChain friendshipMap)
         |> Array.groupBy last2ChildrenInChain
         |> Array.map longestChainInGrouping
 
